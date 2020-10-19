@@ -1,0 +1,41 @@
+{% extends "covid_case/base.html" %}
+
+{% block content %}
+
+<table class="table table-border-less">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td><a href="{% url 'covid_list'%}" class="btn btn-outline-secondary"><i class="fas fa-list"></i> View Whole List</a></td>
+        </tr>
+        <tr>
+            <td>Country_id</td>
+            <td>Date</td>
+            <td>Cases</td>
+            <td>Deaths</td>
+            <td>Name_fr</td>
+            <td>Name_en</td>
+            <td>
+                <a href="{% url 'covid_insert' %}" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add New</a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{country_id}}</td>
+            <td>{{date}}</td>
+            <td>{{cases}}</td>
+            <td>{{deaths}}</td>
+            <td>{{name_fr}}</td>
+            <td>{{name_en}}</td>
+            <td>
+                <a href="{% url 'covid_update' id 0 %}" class="btn text-secondary px-0"><i class="far fa-edit fa-lg"></i> Edit</a>
+                <form class="d-inline" action="{% url 'covid_delete' id 0%}" method="post">
+                    <!-- We have to add this to every django form -->
+                    {% csrf_token %}
+                    <button type="submit" class="btn text-danger"><i class="far fa-trash-alt"></i> Delete</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock content %}

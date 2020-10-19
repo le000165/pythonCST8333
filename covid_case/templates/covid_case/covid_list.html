@@ -1,0 +1,51 @@
+{% extends "covid_case/base.html" %}
+
+{% block content %}
+<table class="table table-border-less">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>
+                <a href="{% url 'covid_one'%}" class="btn btn-outline-secondary"><i class="fas fa-toggle-on"></i> Display One</a>
+            </td>
+            <td>
+                <form class="" action="{% url 'covid_export' %}" method="post">
+                    <!-- We have to add this to every django form -->
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-info"><i class="far fa-file-alt"></i> Export</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>Country_id</td>
+            <td>Date</td>
+            <td>Cases</td>
+            <td>Deaths</td>
+            <td>Name_fr</td>
+            <td>Name_en</td>
+            <td>
+                <a href="{% url 'covid_insert' %}" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add New</a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for covid in covid_list %}
+        <tr>
+            <td>{{covid.country_id}}</td>
+            <td>{{covid.date}}</td>
+            <td>{{covid.cases}}</td>
+            <td>{{covid.deaths}}</td>
+            <td>{{covid.name_fr}}</td>
+            <td>{{covid.name_en}}</td>
+            <td>
+                <a href="{% url 'covid_update' covid.id 1 %}" class="btn text-secondary px-0"><i class="far fa-edit fa-lg"></i> Edit</a>
+                <form class="d-inline" action="{% url 'covid_delete' covid.id 1%}" method="post">
+                    <!-- We have to add this to every django form -->
+                    {% csrf_token %}
+                    <button type="submit" class="btn text-danger"><i class="far fa-trash-alt"></i> Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

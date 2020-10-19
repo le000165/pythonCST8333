@@ -1,0 +1,40 @@
+
+● assignment2
+|
++---● covid_case (app folder)
+|   |
+|   +--● migrations (includes files related to migrations)
+|   |
+|   +--● templates
+|   |  |--● covid_case
+|   |  |  |--base.html
+|   |  |  |--covid_form.html
+|   |  |  |--covid_list.html
+|   |
+|   |-- models.py
+|   |-- forms.py
+|   |-- urls.py
+|   |-- views.py
+|
++---● assignment2 (project folder)
+|   |
+|   |--settings.py
+|   |--urls.py
+|   |--__init__.py
+|   |--asgi.py
+|   |--wsgi.py
+
+
+● Program requirements:
+
+    - Use File-IO on startup to open and read the dataset, initializing one hundred record objects with
+    data parsed from the first one hundred records in the csv file. (DONE)
+    - Use exception handling in case the file is missing or not available.(DONE)
+
+o Provide the user the interactive options and functionality to:
+     Reload the data from the dataset, replacing the in-memory data. (DONE)
+     Persist the data from memory to the disk as a comma-separated file, writing to a new file.(DONE)
+     Select and display either one record, or display multiple records from the in-memory data.(DONE)
+     Create a new record and store it in the simple data structure in memory (DONE)
+     Select and edit a record held in the simple data structure in memory (DONE)
+     Select and delete a record from the simple data structure in memory (DONE)
